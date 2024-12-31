@@ -56,7 +56,7 @@ class Gapps(General):
                 else:
                     print("    Processing extra package : "+os.path.join(self.extract_to, "Core", lz_file))
 
-                    run(["tar", "--lzip", "-xvf", os.path.join(self.extract_to, "Core", lz_file), "-C", os.path.join(self.extract_to, "appunpack")])
+                    run(["tar", "--lzip", "-xvf", os.path.join(self.extract_to, "Core", lz_file), "-C", os.path.join(self.extract_to, "appunpack/")])
                     app_name = os.listdir(os.path.join(self.extract_to, "appunpack"))[0]
                     common_content_dirs = os.listdir(os.path.join(self.extract_to, "appunpack", app_name, "common"))
                     for ccdir in common_content_dirs:
