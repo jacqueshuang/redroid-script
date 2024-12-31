@@ -194,7 +194,8 @@ class LiteGapps(General):
     if os.environ.get("CACHE_HOME", None) is None:
        extract_to = "/tmp/litegapps/extract"
     else:
-      extract_to = os.environ["CACHE_HOME"].join("/litegapps/extract")
+
+      extract_to = "{}/litegapps/extract".format(os.environ["CACHE_HOME"])
 
 
     def __init__(self, version):

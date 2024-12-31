@@ -36,7 +36,7 @@ on property:ro.enable.native.bridge.exec=1
     if os.environ.get("CACHE_HOME", None) is None:
        extract_to = "/tmp/houdiniunpack"
     else:
-      extract_to = os.environ["CACHE_HOME"].join("/houdiniunpack")
+        extract_to = "{}/houdiniunpack".format(os.environ["CACHE_HOME"]);
 
 
     def __init__(self, version):

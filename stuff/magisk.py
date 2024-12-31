@@ -13,7 +13,7 @@ class Magisk(General):
     if os.environ.get("CACHE_HOME", None) is None:
        extract_to = "/tmp/magisk_unpack"
     else:
-      extract_to = os.environ["CACHE_HOME"].join("/magisk_unpack")
+        extract_to = "{}/magisk_unpack".format(os.environ["CACHE_HOME"]);
     copy_dir = "./magisk"
     magisk_dir = os.path.join(copy_dir, "system", "etc", "init", "magisk")
     machine = host()

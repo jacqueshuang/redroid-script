@@ -91,7 +91,7 @@ class MindTheGapps(General):
     if os.environ.get("CACHE_HOME", None) is None:
         extract_to = "/tmp/mindthegapps/extract"
     else:
-        extract_to = os.environ["CACHE_HOME"].join("/mindthegapps/extract")
+        extract_to = "{}/mindthegapps/extract".format(os.environ["CACHE_HOME"]);
 
 
     def __init__(self, version):

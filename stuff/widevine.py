@@ -42,7 +42,7 @@ class Widevine(General):
     if os.environ.get("CACHE_HOME", None) is None:
        extract_to = "/tmp/widevineunpack"
     else:
-      extract_to = os.environ["CACHE_HOME"].join("/widevineunpack")
+      extract_to = "{}/widevineunpack".format(os.environ["CACHE_HOME"]);
 
     def download(self):
         print_color("Downloading widevine now .....", bcolors.GREEN)

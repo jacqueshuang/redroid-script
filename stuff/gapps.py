@@ -15,11 +15,12 @@ class Gapps(General):
     dl_link = dl_links[arch[0]][0]
     dl_file_name = os.path.join(download_loc, "open_gapps.zip")
     act_md5 = dl_links[arch[0]][1]
+    extract_to=""
     copy_dir = "./gapps"
     if os.environ.get("CACHE_HOME", None) is None:
        extract_to = "/tmp/ogapps/extract"
     else:
-      extract_to = os.environ["CACHE_HOME"].join("/ogapps/extract")
+      extract_to = "{}/ogapps/extract".format(os.environ["CACHE_HOME"]);
     non_apks = [
         "defaultetc-common.tar.lz",
         "defaultframework-common.tar.lz",

@@ -11,7 +11,7 @@ class Ndk(General):
     if os.environ.get("CACHE_HOME", None) is None:
        extract_to = "/tmp/libndkunpack"
     else:
-      extract_to = os.environ["CACHE_HOME"].join("/libndkunpack")
+      extract_to = "{}/libndkunpack".format(os.environ["CACHE_HOME"]);
 
     act_md5 = "6d4b3788ac9e7e953aada561f64a2563"
 #     init_rc_component = """
