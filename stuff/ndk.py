@@ -8,7 +8,11 @@ class Ndk(General):
     copy_dir = "./ndk"
     dl_link = "https://github.com/supremegamers/vendor_google_proprietary_ndk_translation-prebuilt/archive/0c6b0aad45498bbdb22eb1311b145d08ff4ce1fc.zip"
     dl_file_name = os.path.join(download_loc, "libndktranslation.zip")
-    extract_to = "/tmp/libndkunpack"
+    if os.environ.get("CACHE_HOME", None) is None:
+       extract_to = "/tmp/libndkunpack"
+    else:
+      extract_to = os.environ["CACHE_HOME"].join("/libndkunpack")
+
     act_md5 = "6d4b3788ac9e7e953aada561f64a2563"
 #     init_rc_component = """
 # # Enable native bridge for target executables

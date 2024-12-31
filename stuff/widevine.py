@@ -39,7 +39,10 @@ class Widevine(General):
         }
     }
     dl_file_name = os.path.join(download_loc, "widevine.zip")
-    extract_to = "/tmp/widevineunpack"
+    if os.environ.get("CACHE_HOME", None) is None:
+       extract_to = "/tmp/widevineunpack"
+    else:
+      extract_to = os.environ["CACHE_HOME"].join("/widevineunpack")
 
     def download(self):
         print_color("Downloading widevine now .....", bcolors.GREEN)
@@ -48,7 +51,7 @@ class Widevine(General):
     def copy(self):
         if os.path.exists(self.copy_dir):
             shutil.rmtree(self.copy_dir)
-        run(["chmod", "+x", self.extract_to, "-R"])
+        run(["chmod", "+x","-R",self.extract_to])
         print_color("Copying widevine library files ...", bcolors.GREEN)
         name = re.findall("([a-zA-Z0-9]+)\.zip", self.dl_link)[0]
         shutil.copytree(os.path.join(self.extract_to, "vendor_google_proprietary_widevine-prebuilt-"+name,

@@ -33,7 +33,11 @@ on property:ro.enable.native.bridge.exec=1
         # "8.1.0":[]
     }
     dl_file_name = os.path.join(download_loc, "libhoudini.zip")
-    extract_to = "/tmp/houdiniunpack"
+    if os.environ.get("CACHE_HOME", None) is None:
+       extract_to = "/tmp/houdiniunpack"
+    else:
+      extract_to = os.environ["CACHE_HOME"].join("/houdiniunpack")
+
 
     def __init__(self, version):
         self.version = version

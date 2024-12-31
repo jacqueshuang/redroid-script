@@ -88,7 +88,11 @@ class MindTheGapps(General):
     dl_link = ...
     act_md5 = ...
     copy_dir = "./mindthegapps"
-    extract_to = "/tmp/mindthegapps/extract"
+    if os.environ.get("CACHE_HOME", None) is None:
+        extract_to = "/tmp/mindthegapps/extract"
+    else:
+        extract_to = os.environ["CACHE_HOME"].join("/mindthegapps/extract")
+
 
     def __init__(self, version):
         self.version = version

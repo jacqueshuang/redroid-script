@@ -191,7 +191,11 @@ class LiteGapps(General):
     dl_link = ...
     act_md5 = ...
     copy_dir = "./litegapps"
-    extract_to = "/tmp/litegapps/extract"
+    if os.environ.get("CACHE_HOME", None) is None:
+       extract_to = "/tmp/litegapps/extract"
+    else:
+      extract_to = os.environ["CACHE_HOME"].join("/litegapps/extract")
+
 
     def __init__(self, version):
         self.version = version
